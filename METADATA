@@ -15,4 +15,5 @@ third_party {
   }
   version: "20121220"
   last_upgrade_date { year: 2017 month: 11 day: 16 }
+  license_type: NOTICE
 }
