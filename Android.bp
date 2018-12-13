@@ -27,6 +27,8 @@ cc_defaults {
         "-Wno-missing-field-initializers",
         "-Wno-self-assign",
         "-Wno-unused-parameter",
+        // And one less harmless used with strtod(3) in `lex.c`.
+        "-Wno-unused-result",
     ],
 }
 
@@ -40,4 +42,9 @@ cc_binary {
     defaults: ["awk-defaults"],
     stem: "awk",
     vendor: true,
+}
+
+cc_binary_host {
+    name: "one-true-awk",
+    defaults: ["awk-defaults"],
 }
