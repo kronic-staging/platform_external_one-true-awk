@@ -29,6 +29,9 @@ cc_defaults {
         "-Wno-unused-parameter",
         // And one less harmless used with strtod(3) in `lex.c`.
         "-Wno-unused-result",
+        // Also ignore harmless macro redefinitions: glibc 2.17 #defines dprintf
+        // in stdio2.h, and this #defines it in awk.h
+        "-Wno-macro-redefined",
     ],
 }
 
