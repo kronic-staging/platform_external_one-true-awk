@@ -6,14 +6,10 @@ description:
 
 third_party {
   url {
-    type: HOMEPAGE
-    value: "https://www.cs.princeton.edu/~bwk/btl.mirror/"
+    type: GIT
+    value: "https://github.com/onetrueawk/awk.git"
   }
-  url {
-    type: ARCHIVE
-    value: "https://www.cs.princeton.edu/~bwk/btl.mirror/awk.tar.gz"
-  }
-  version: "20121220"
-  last_upgrade_date { year: 2017 month: 11 day: 16 }
+  version: "c3c7c1370e9a9969bdcaf2018c5e62096ac15c55"
+  last_upgrade_date { year: 2019 month: 1 day: 30 }
   license_type: NOTICE
 }
