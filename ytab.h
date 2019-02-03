@@ -133,11 +133,12 @@ extern int yydebug;
     CAT = 343,
     NOT = 344,
     UMINUS = 345,
-    POWER = 346,
-    DECR = 347,
-    INCR = 348,
-    INDIRECT = 349,
-    LASTTOKEN = 350
+    UPLUS = 346,
+    POWER = 347,
+    DECR = 348,
+    INCR = 349,
+    INDIRECT = 350,
+    LASTTOKEN = 351
   };
 #endif
 /* Tokens.  */
@@ -229,11 +230,12 @@ extern int yydebug;
 #define CAT 343
 #define NOT 344
 #define UMINUS 345
-#define POWER 346
-#define DECR 347
-#define INCR 348
-#define INDIRECT 349
-#define LASTTOKEN 350
+#define UPLUS 346
+#define POWER 347
+#define DECR 348
+#define INCR 349
+#define INDIRECT 350
+#define LASTTOKEN 351
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -247,7 +249,7 @@ union YYSTYPE
 	int	i;
 	char	*s;
 
-#line 251 "y.tab.h" /* yacc.c:1909  */
+#line 253 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

@@ -62,6 +62,7 @@ struct xx
 	{ DIVIDE, "arith", " / " },
 	{ MOD, "arith", " % " },
 	{ UMINUS, "arith", " -" },
+	{ UPLUS, "arith", " +" },
 	{ POWER, "arith", " **" },
 	{ PREINCR, "incrdecr", "++" },
 	{ POSTINCR, "incrdecr", "++" },
@@ -133,6 +134,8 @@ int main(int argc, char *argv[])
 	while (fgets(buf, sizeof buf, fp) != NULL) {
 		n = sscanf(buf, "%1c %s %s %d", &c, def, name, &tok);
 		if (c != '#' || (n != 4 && strcmp(def,"define") != 0))	/* not a valid #define */
+			continue;
+		if (strcmp(name, "YYSTYPE_IS_DECLARED") == 0)
 			continue;
 		if (tok < FIRSTTOKEN || tok > LASTTOKEN) {
 			/* fprintf(stderr, "maketab funny token %d %s ignored\n", tok, buf); */

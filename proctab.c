@@ -2,7 +2,7 @@
 #include "awk.h"
 #include "ytab.h"
 
-static char *printname[93] = {
+static char *printname[94] = {
 	(char *) "FIRSTTOKEN",	/* 258 */
 	(char *) "PROGRAM",	/* 259 */
 	(char *) "PASTAT",	/* 260 */
@@ -91,15 +91,16 @@ static char *printname[93] = {
 	(char *) "CAT",	/* 343 */
 	(char *) "NOT",	/* 344 */
 	(char *) "UMINUS",	/* 345 */
-	(char *) "POWER",	/* 346 */
-	(char *) "DECR",	/* 347 */
-	(char *) "INCR",	/* 348 */
-	(char *) "INDIRECT",	/* 349 */
-	(char *) "LASTTOKEN",	/* 350 */
+	(char *) "UPLUS",	/* 346 */
+	(char *) "POWER",	/* 347 */
+	(char *) "DECR",	/* 348 */
+	(char *) "INCR",	/* 349 */
+	(char *) "INDIRECT",	/* 350 */
+	(char *) "LASTTOKEN",	/* 351 */
 };
 
 
-Cell *(*proctab[93])(Node **, int) = {
+Cell *(*proctab[94])(Node **, int) = {
 	nullproc,	/* FIRSTTOKEN */
 	program,	/* PROGRAM */
 	pastat,	/* PASTAT */
@@ -188,6 +189,7 @@ Cell *(*proctab[93])(Node **, int) = {
 	cat,	/* CAT */
 	boolop,	/* NOT */
 	arith,	/* UMINUS */
+	arith,	/* UPLUS */
 	arith,	/* POWER */
 	nullproc,	/* DECR */
 	nullproc,	/* INCR */
