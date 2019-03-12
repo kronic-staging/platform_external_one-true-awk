@@ -8,6 +8,8 @@ cc_defaults {
         "-Wno-missing-field-initializers",
         "-Wno-self-assign",
         "-Wno-unused-parameter",
+        // A loop to UCHAR_MAX in `b.c`.
+        "-Wno-sign-compare",
         // And one less harmless used with strtod(3) in `lex.c`.
         "-Wno-unused-result",
         // Also ignore harmless macro redefinitions: glibc 2.17 #defines dprintf
