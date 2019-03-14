@@ -21,28 +21,51 @@ cc_defaults {
     ],
 }
 
-// TODO: we should actually rebuild awkgram.y and pass the output through maketab.
-// For now we just rebuild the checked-in generated files.
-cc_binary {
+genrule {
+    name: "ytab.c",
+    cmd: "$(location bison) -y --output=$(genDir)/ytab.c $(in)",
+    out: ["ytab.c"],
+    srcs: ["awkgram.y"],
+    tools: ["bison"],
+}
+
+genrule {
+    name: "ytab.h",
+    cmd: "$(location bison) -y --defines=$(genDir)/ytab.h --output=$(genDir)/ytab.c $(in)",
+    out: ["ytab.h"],
+    srcs: ["awkgram.y"],
+    tools: ["bison"],
+}
+
+genrule {
+    name: "proctab.c",
+    tools: ["awk-maketab"],
+    cmd: "$(location awk-maketab) $(in) > $(genDir)/proctab.c",
+    out: ["proctab.c"],
+    srcs: [":ytab.h"],
+}
+
+cc_binary_host {
     name: "awk-maketab",
     defaults: ["awk-flags"],
+    generated_headers: ["ytab.h"],
     srcs: ["maketab.c"]
 }
 
 cc_defaults {
     name: "awk-defaults",
     defaults: ["awk-flags"],
-
+    generated_headers: ["ytab.h"],
     srcs: [
         "b.c",
         "lex.c",
         "lib.c",
         "main.c",
         "parse.c",
-        "proctab.c",
+        ":proctab.c",
         "run.c",
         "tran.c",
-        "ytab.c",
+        ":ytab.c",
     ],
 }
 
